@@ -8,7 +8,7 @@
 
 <main class="container">
 
-    <h2 class="mt-5 text-muted">Listado de ventas</h2>
+    <h2 class="mt-5 text-muted">Listado de ventas {% if client %} {{ client.name }} {% endif %}</h2>
     <hr class="mb-5">
 
     <table class="table">
@@ -28,7 +28,7 @@
             {% for sale in sales %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td class="h6">{{ sale.id }}</td>
+                    <td class="h6"><a href=" {% url 'sale_detail' sale=sale.id %}">{{ sale.id }}</a></td>
                     <td>{{ sale.client }}</td>
                     <td>{{ sale.created_at }}</td>
                     <td>{{ sale.iva }}</td>

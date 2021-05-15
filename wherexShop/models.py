@@ -15,8 +15,8 @@ class Client(models.Model):
     def get_all_active_client ():
         return Client.objects.filter(state=True)
 
-    def get_client (client_id):
-        return Client.objects.get(pk=client_id)
+    def get_client (client):
+        return Client.objects.get(pk=client)
 
 
 class Product(models.Model):
@@ -50,6 +50,12 @@ class Sale(models.Model):
 
     def get_all_sale ():
         return Sale.objects.all()
+    
+    def get_client_sales (client):
+        return Sale.objects.filter(client=client)
+
+    def get_sale (sale):
+        return Sale.objects.get(id=sale)
 
 
 class SaleDetail(models.Model):
@@ -63,3 +69,6 @@ class SaleDetail(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    def get_sale_detail (sale):
+        return SaleDetail.objects.get(sale_id=sale)

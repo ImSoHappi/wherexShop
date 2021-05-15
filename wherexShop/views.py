@@ -1,5 +1,5 @@
 import uuid
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Client, Sale, SaleDetail
 import ast
 
@@ -53,3 +53,21 @@ def saleList(request):
     context['sales'] = Sale.get_all_sale()
 
     return render(request, 'sale_list.html', context=context)
+
+def clientSaleList (request, client):
+    context = {}
+    context['sales'] = Sale.get_client_sales(client)
+    context['client'] = Client.get_client(client)
+    return render(request, 'sale_list.html', context=context)
+
+def saleDetail (request, sale):
+    
+    if request.method == "POST":
+        deleteSale = get_object_or_404(Sale, id=sale)
+        deleteSale.delete()
+        return redirect('sales')
+
+    context = {}
+    context['detail'] = SaleDetail.get_sale_detail(sale)
+    context['sale'] = Sale.get_sale(sale)
+    return render(request, 'sale_detail.html', context=context)
