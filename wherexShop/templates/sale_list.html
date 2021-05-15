@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Ventas {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<main class="container">
+
+    <h2 class="mt-5 text-muted">Listado de ventas</h2>
+    <hr class="mb-5">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="h4">#</th>
+            <th scope="col" class="h4">Codigo</th>
+            <th scope="col" class="h4">Cliente</th>
+            <th scope="col" class="h4">Fecha</th>
+            <th scope="col" class="h4">Iva</th>
+            <th scope="col" class="h4">Descuento</th>
+            <th scope="col" class="h4">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for sale in sales %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td class="h6">{{ sale.id }}</td>
+                    <td>{{ sale.client }}</td>
+                    <td>{{ sale.created_at }}</td>
+                    <td>{{ sale.iva }}</td>
+                    <td>{{ sale.discount }}</td>
+                    <td>{{ sale.total }}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+      </table>
+
+</main>
+
+{% endblock content %}

@@ -1,0 +1,127 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Menu principal {% endblock %}
+
+{% block stylesheets %} <link rel="stylesheet" href="/static/css/home.css"> {% endblock stylesheets %}
+
+{% block content %}
+
+<main class="container">
+    
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-image banner" style="background-image: url(/static/img/banner.jpg); background-size:cover; background-position: center;">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
+        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+        <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+      </div>
+    </div>
+  
+    <div class="row g-5">
+      <div class="col-md-8">
+        
+        <h2 class="mt-5 text-muted">Catalogo</h2>
+        <hr class="mb-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+          {% for product in products %}
+            <div class="col">
+              <div class="card h-100">
+                <img src="/static/img/cactus-1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis magna eros, quis vehicula purus viverra et.</p>
+                    <div class="row">
+                        <h4 class="col price">$ {{ product.price }}</h4>
+                        <h6 class="text-success col stock">{{ product.stock }} en stock</h6>
+                    </div>
+                    <div class="d-grid gap-2 mt-3">
+                      <button class="btn btn-success btn-lg" id="{{ product.id }}" type="button" onclick="add_to_cart(this.id)">Añadir al carro</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+      </div>
+      
+    </div>
+
+    <div class="col-md-4 mt-5 mb-5">
+      <div class="position-sticky" style="top: 2rem;">
+
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-secondary">Carrito</span>
+            <span class="badge bg-secondary rounded-pill" id="amountCount">0</span>
+          </h4>
+          <ul class="list-group mb-3" id="cart">
+            <li class="list-group-item d-flex justify-content-between lh-sm bg-secondary text-white p-3">
+              <div>
+                <h5 class="my-0" id="55">Producto</h5>
+              </div>
+              <h5>Precio unitario</h5>
+            </li>
+          </ul>
+          <hr>
+        
+          <form action="" method="POST">
+            {% csrf_token %}
+
+            <textarea name="sale" id="sale" cols="30" rows="10" style="display: none;"></textarea>
+
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">Sub Total</h6>
+                </div>
+                <input type="number" id="subtot" name="subtotal" style="display: none;">
+                <span class="text-muted" id="subtotal"></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-sm text-success">
+                <div>
+                    <h6 class="my-0">Descuento (-10%)</h6>
+                </div>
+                <input type="number" id="disc" name="discount" style="display: none;">
+                <span id="discount"></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-sm text-danger">
+                <div>
+                    <h6 class="my-0">Iva (+19%)</h6>                
+                </div>
+                <input type="number" id="iv" name="iva" style="display: none;">
+                <span id="iva"></span>
+              </li>
+              <hr>
+              <li class="list-group-item d-flex justify-content-between lh-sm p-3">
+                <div>
+                    <h4 class="my-0">Total $</h4>
+                </div>
+                <input type="number" id="tot" name="total" style="display: none;">
+                <span class="h4" id="total"></span>
+              </li>
+              <hr>
+              <li class="list-group-item d-flex justify-content-between lh-sm p-3">
+                <div>
+                    <label for="client">Cliente</label>
+                </div>
+                <select name="client" id="client">
+                  {% for client in active_clients %}
+                    <option value="{{ client.id }}">{{ client.name }}</option>
+                  {% endfor %}
+                </select>
+              </li>
+            </ul>
+
+            <div class="d-grid mt-3">
+              <button class="btn btn-success btn-lg" type="submit" name="add_sale" onsubmit="setFormSubmitting()">Ingresar venta</button>
+              <button class="btn btn-outline-danger" type="button">Vaciar carro</button>
+            </div>
+          </form>
+
+      </div>
+    </div>
+  
+  </main>
+
+{% endblock content %}
+
+

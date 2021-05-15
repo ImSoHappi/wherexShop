@@ -9,6 +9,15 @@ class Client(models.Model):
     def __str__(self):
         return self.name
 
+    def get_all_client ():
+        return Client.objects.all()
+
+    def get_all_active_client ():
+        return Client.objects.filter(state=True)
+
+    def get_client (client_id):
+        return Client.objects.get(pk=client_id)
+
 
 class Product(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
@@ -18,6 +27,12 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_all_stock_product ():
+        return Product.objects.filter(stock__gt=0)
+
+    def get_all_product ():
+        return Product.objects.all()
 
 
 class Sale(models.Model):
@@ -32,6 +47,9 @@ class Sale(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    def get_all_sale ():
+        return Sale.objects.all()
 
 
 class SaleDetail(models.Model):

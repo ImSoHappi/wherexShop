@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Clientes {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<main class="container">
+
+    <h2 class="mt-5 text-muted">Listado de clientes</h2>
+    <hr class="mb-5">
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+        {% for client in clients %} 
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="/static/img/client.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h3 class="card-title">{{ client.name }}</h3>
+                <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Ver ventas</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</main>
+
+{% endblock content %}
