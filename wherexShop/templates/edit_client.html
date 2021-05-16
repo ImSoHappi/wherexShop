@@ -1,0 +1,44 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} {{client.name}} {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<main class="container">
+
+    <h2 class="mt-5 text-muted">Editar cliente</h2>
+    <hr class="mb-5">
+
+    <div class="mx-auto col-md-5">
+
+        <div class="text-center mb-5">
+            <img src="/static/img/client.jpg" class="rounded" alt="...">
+        </div>
+        
+
+        <form action="" method="POST">
+            {% csrf_token %}
+    
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre del cliente</label>
+                <input type="text" value="{{client.name}}" id="name" name="name" class="form-control">
+            </div>
+    
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="state" name="state" {% if client.state %} checked {% endif %}>
+                <label class="form-check-label" for="state">Cliente Habilitado</label>
+            </div>
+
+            <div class="d-grid gap-2 mt-5">
+                <button type="submit" class="btn btn-primary btn-lg" name="update_client" onsubmit="setFormSubmitting()">Actualizar</button>
+                <button type="submit" class="btn btn-outline-danger" name="delete_client" onsubmit="setFormSubmitting()">Eliminar</button>
+            </div>
+
+        </form>
+    </div>
+
+</main>
+
+{% endblock content %}

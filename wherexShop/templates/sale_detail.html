@@ -1,0 +1,68 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Detalle {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<main class="container">
+    <form method="POST">
+        <h2 class="mt-5 text-muted">Detalle venta
+                {% csrf_token %}
+                <button type="submit" id="completed-task" class="fabutton"><i class="fas fa-trash text-danger fa-sm"></i></button>
+            <h6>N° {{ sale.id }}</h6>
+            <p class="text-muted">Realizada el {{sale.created_at}} </p>
+        </h2>
+    </form>
+    <hr class="mb-5">
+
+    <div class="row g-0">
+
+            <ul class="list-group mx-auto col-md-6 mt-3">
+                <h2 class=" mb-3">Cliente <strong>{{ sale.client}}</strong></h2>
+                <h4 class="text-secondary">Detalle</h4>
+
+                {% for product in detail.products.all %}
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                      <h6 class="my-0">{{ product.name }}</h6>
+                      <small class="text-muted">Brief description</small>
+                    </div>
+                    <span class="text-muted">{{ product.price }}</span>
+                  </li>
+                {% endfor %}
+
+                  <hr>
+
+                <li class="list-group-item d-flex justify-content-between lh-sm bg-light">
+                  <div>
+                      <h6 class="my-0">Sub Total</h6>
+                  </div>
+                  <span class="text-muted" id="subtotal">{{ detail.subtotal }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm text-success bg-light">
+                  <div>
+                      <h6 class="my-0">Descuento (-10%)</h6>
+                  </div>
+                  <span id="discount">{{ sale.discount }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm text-danger bg-light">
+                  <div>
+                      <h6 class="my-0">Iva (+19%)</h6>                
+                  </div>
+                  <span id="iva">{{ sale.iva }}</span>
+                </li>
+                <hr>
+                <li class="list-group-item d-flex justify-content-between lh-sm p-3">
+                  <div>
+                      <h4 class="my-0">Total $</h4>
+                  </div>
+                  <span class="h4" id="total">{{ sale.total }}</span>
+                </li>
+              </ul>
+    </div>
+
+</main>
+
+{% endblock content %}

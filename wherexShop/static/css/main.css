@@ -1,0 +1,17 @@
+.fabutton {
+    background: none;
+    padding: 0px;
+    border: none;
+}
+
+.add_card {
+    background-color: rgba(207, 207, 207, 0.25);
+}
+
+.add_card:hover {
+    background-color: rgba(207, 207, 207, 0.45);
+}
+
+.add_icon {
+    color: rgba(129, 129, 129, 0.6);
+}
