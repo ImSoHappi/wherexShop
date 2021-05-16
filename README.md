@@ -1,5 +1,5 @@
 # wherexShop
-Página de prueba para la empresa Wherex.
+Página de evaluación para empresa Wherex.
 
 ## Requerimientos
 
