@@ -49,9 +49,9 @@ En esta vista se listan todas las ventas que están almacenadas en la base de da
 ![New Mockup 4](https://user-images.githubusercontent.com/43582318/118384151-d1591280-b5d1-11eb-9a15-771d7447a937.png)
 
 
-### Modelos
+### Diagrama de Entidad-Relación
 
-Para esta aplicación se utilizo una base de datos SQLite que cuenta con 4 modelos, Cliente, Producto, Venta, y Detalle Venta.
+Para esta aplicación se utilizo una base de datos SQLite que cuenta con 4 entidades, Cliente, Producto, Venta, y Detalle Venta.
 
 ![Diagrama ER de DBMS (notación UML)](https://user-images.githubusercontent.com/43582318/118384597-3d894580-b5d5-11eb-85aa-9b38b20e7819.jpeg)
 
