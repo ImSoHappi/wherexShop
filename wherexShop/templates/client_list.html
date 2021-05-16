@@ -11,15 +11,30 @@
     <h2 class="mt-5 text-muted">Listado de clientes</h2>
     <hr class="mb-5">
 
+
+
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+
+        <div class="col">
+            <a href="{% url 'add_client' %}">
+            <div class="card h-100 add_card" style="width: 18rem;">
+                <div class="card-body text-center d-flex align-items-center justify-content-center">
+                    <i class="fas fa-plus fa-4x add_icon"></i>
+                </div>
+            </div>
+            </a>
+        </div>
+
+
         {% for client in clients %} 
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card h-100" style="width: 18rem;">
                 <img src="/static/img/client.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                 <h3 class="card-title">{{ client.name }}</h3>
                 <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="{% url 'client_sales' client=client.id %}" class="btn btn-primary">Ver ventas</a>
+                <a href="{% url 'client_edit' client=client.id %}" class="btn btn-secondary">Editar</a>
                 </div>
             </div>
         </div>

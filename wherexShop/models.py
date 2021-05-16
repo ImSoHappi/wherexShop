@@ -34,6 +34,9 @@ class Product(models.Model):
     def get_all_product ():
         return Product.objects.all()
 
+    def get_product (product):
+        return Product.objects.get(id=product)
+
 
 class Sale(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)

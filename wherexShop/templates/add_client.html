@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Nuevo cliente {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<main class="container">
+
+    <h2 class="mt-5 text-muted">Nuevo cliente</h2>
+    <hr class="mb-5">
+
+    <div class="mx-auto col-md-5">
+
+        <form action="" method="POST">
+            {% csrf_token %}
+    
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre del cliente</label>
+                <input type="text" id="name" name="name" class="form-control">
+            </div>
+    
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="state" name="state" checked>
+                <label class="form-check-label" for="state">Cliente Habilitado</label>
+            </div>
+
+            <div class="d-grid gap-2 mt-5">
+                <button type="submit" class="btn btn-primary btn-lg" name="add_client" onsubmit="setFormSubmitting()">Crear</button>
+            </div>
+
+        </form>
+    </div>
+
+</main>
+
+{% endblock content %}

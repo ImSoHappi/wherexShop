@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} {{product.name}} {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<main class="container">
+
+    <h2 class="mt-5 text-muted">Editar producto</h2>
+    <hr class="mb-5">
+
+    <div class="mx-auto col-md-5">
+
+        <div class="text-center mb-5">
+            <img src="/static/img/cactus-1.jpg" class="rounded" alt="...">
+        </div>
+        
+
+        <form action="" method="POST">
+            {% csrf_token %}
+    
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre del producto</label>
+                <input type="text" value="{{product.name}}" id="name" name="name" class="form-control">
+            </div>
+    
+            <div class="mb-3">
+                <label for="price" class="form-label">Precio del producto</label>
+                <input type="number" value="{{product.price}}" id="price" name="price" class="form-control">
+            </div>
+    
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock del producto</label>
+                <input type="number" value="{{product.stock}}" id="stock" name="stock" class="form-control">
+            </div>
+
+            <div class="d-grid gap-2 mt-5">
+                <button type="submit" class="btn btn-primary btn-lg" name="update_product" onsubmit="setFormSubmitting()">Actualizar</button>
+                <button type="submit" class="btn btn-outline-danger" name="delete_product" onsubmit="setFormSubmitting()">Eliminar</button>
+            </div>
+
+        </form>
+    </div>
+
+</main>
+
+{% endblock content %}

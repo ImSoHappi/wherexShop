@@ -11,7 +11,8 @@
         <h2 class="mt-5 text-muted">Detalle venta
                 {% csrf_token %}
                 <button type="submit" id="completed-task" class="fabutton"><i class="fas fa-trash text-danger fa-sm"></i></button>
-            <h6>{{ sale.id }}</h6>
+            <h6>N° {{ sale.id }}</h6>
+            <p class="text-muted">Realizada el {{sale.created_at}} </p>
         </h2>
     </form>
     <hr class="mb-5">
@@ -19,7 +20,7 @@
     <div class="row g-0">
 
             <ul class="list-group mx-auto col-md-6 mt-3">
-
+                <h2 class=" mb-3">Cliente <strong>{{ sale.client}}</strong></h2>
                 <h4 class="text-secondary">Detalle</h4>
 
                 {% for product in detail.products.all %}

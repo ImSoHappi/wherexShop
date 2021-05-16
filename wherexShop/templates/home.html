@@ -8,11 +8,10 @@
 
 <main class="container">
     
-    <div class="p-4 p-md-5 mb-4 text-white rounded bg-image banner" style="background-image: url(/static/img/banner.jpg); background-size:cover; background-position: center;">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-image banner" style="background-image: url(/static/img/banner.jpg); background-size:cover; background-position: center; height: 60vh;">
       <div class="col-md-6 px-0">
-        <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-        <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+        <h1 class="display-4 fst-italic">WherexShop</h1>
+        <p class="lead my-3">Pagina de prueba para postulacion Wherex.</p>
       </div>
     </div>
   
@@ -100,10 +99,8 @@
               </li>
               <hr>
               <li class="list-group-item d-flex justify-content-between lh-sm p-3">
-                <div>
-                    <label for="client">Cliente</label>
-                </div>
-                <select name="client" id="client">
+
+                <select name="client" id="client" class="form-select ">
                   {% for client in active_clients %}
                     <option value="{{ client.id }}">{{ client.name }}</option>
                   {% endfor %}
@@ -112,7 +109,7 @@
             </ul>
 
             <div class="d-grid mt-3">
-              <button class="btn btn-success btn-lg" type="submit" name="add_sale" onsubmit="setFormSubmitting()">Ingresar venta</button>
+              <button class="btn btn-primary btn-lg mb-1" type="submit" name="add_sale" onsubmit="setFormSubmitting()">Ingresar venta</button>
               <button class="btn btn-outline-danger" type="button">Vaciar carro</button>
             </div>
           </form>

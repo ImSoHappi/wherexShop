@@ -71,3 +71,79 @@ def saleDetail (request, sale):
     context['detail'] = SaleDetail.get_sale_detail(sale)
     context['sale'] = Sale.get_sale(sale)
     return render(request, 'sale_detail.html', context=context)
+
+def productEdit (request, product):
+
+    if request.method == "POST":
+        if 'delete_product' in request.POST:
+            deleteProduct = get_object_or_404(Product, id=product)
+            deleteProduct.delete()
+            return redirect('products')
+
+        if 'update_product' in request.POST:
+            updateProduct = get_object_or_404(Product, id=product)
+            updateProduct.name = request.POST['name']
+            updateProduct.price = request.POST['price']
+            updateProduct.stock = request.POST['stock']
+            updateProduct.save()
+            return redirect('product_edit', product=product)
+
+    context = {}
+    context['product'] = Product.get_product(product)
+    return render(request, 'edit_product.html', context=context)
+
+
+def clientEdit (request, client):
+
+    if request.method == "POST":
+        if 'delete_client' in request.POST:
+            deleteCliente = get_object_or_404(Client, id=client)
+            deleteCliente.delete()
+            return redirect('clients')
+
+        if 'update_client' in request.POST:
+            updateClient = get_object_or_404(Client, id=client)
+            updateClient.name = request.POST['name']
+
+            if 'state' in request.POST:
+                state = True
+                print("True")
+            else:
+                state = False
+                print("False")
+
+            updateClient.state = state
+            updateClient.save()
+            return redirect('client_edit', client=client)
+
+    context = {}
+    context['client'] = Client.get_client(client)
+    return render(request, 'edit_client.html', context=context)
+
+
+def addProduct (request):
+
+    if request.method == "POST":
+
+        product = Product.objects.create(name=request.POST['name'], price=request.POST['price'], stock=request.POST['stock'])
+        product.save()
+        return redirect('products')
+
+    return render(request, 'add_product.html')
+
+
+def addClient (request):
+
+    if request.method == "POST":
+        
+        if 'state' in request.POST:
+            state = True
+        else:
+            state = False
+
+        client = Client.objects.create(name=request.POST['name'], state=state)
+        client.save()
+
+        return redirect('clients')
+
+    return render(request, 'add_client.html')
