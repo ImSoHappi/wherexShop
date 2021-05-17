@@ -52,10 +52,10 @@ class Sale(models.Model):
         return str(self.id)
 
     def get_all_sale ():
-        return Sale.objects.all()
+        return Sale.objects.all().order_by('-created_at')
     
     def get_client_sales (client):
-        return Sale.objects.filter(client=client)
+        return Sale.objects.filter(client=client).order_by('-created_at')
 
     def get_sale (sale):
         return Sale.objects.get(id=sale)

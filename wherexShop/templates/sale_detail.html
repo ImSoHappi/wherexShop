@@ -22,9 +22,8 @@
             <ul class="list-group mx-auto col-md-6 mt-3">
                 <h2 class=" mb-3">Cliente <strong>{{ sale.client}}</strong></h2>
                 <h4 class="text-secondary">Detalle</h4>
-
                 {% for product in detail.products.all %}
-                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <li class="list-group-item d-flex justify-content-between lh-sm">
                     <div>
                       <h6 class="my-0">{{ product.name }}</h6>
                       <small class="text-muted">Brief description</small>

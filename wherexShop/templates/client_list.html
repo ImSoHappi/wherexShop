@@ -28,10 +28,10 @@
 
         {% for client in clients %} 
         <div class="col">
-            <div class="card h-100" style="width: 18rem;">
+            <div class="card h-100 {% if not client.state%} deshabilitado {% endif %}" style="width: 18rem;">
                 <img src="/static/img/client.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                <h3 class="card-title">{{ client.name }}</h3>
+                <h3 class="card-title">{{ client.name }} {% if client.state%}<i class="fas fa-check-circle fa-xs text-primary">{% else %}<i class="fas fa-times-circle fa-xs text-danger"></i>{% endif %}</i></h3>
                 <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="{% url 'client_sales' client=client.id %}" class="btn btn-primary">Ver ventas</a>
                 <a href="{% url 'client_edit' client=client.id %}" class="btn btn-secondary">Editar</a>

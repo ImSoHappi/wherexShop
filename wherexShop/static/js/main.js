@@ -73,6 +73,7 @@ function remove_item(item_id) {
     const existingItem = cart.querySelector('li.'+ CSS.escape(item_id))
     const itemCost = existingItem.querySelector('.item-price').textContent
     let amount = existingItem.querySelector('input').getAttribute('value')
+    let actuallyAmount = amount
 
     amount = parseInt(amount) - 1
     existingItem.querySelector('input').setAttribute('value', amount)
@@ -81,7 +82,7 @@ function remove_item(item_id) {
     document.getElementById('sale').value = JSON.stringify(sale)
     totalAmount = totalAmount - 1
 
-    if (amount = 1) {
+    if (actuallyAmount == 1) {
         existingItem.remove()
         sale.splice(indexSale, 1)
         if(sale.length == 0) {
@@ -115,5 +116,6 @@ function update_prices(itemCost, operation) {
     document.getElementById('total').innerHTML = Math.round(total)
     document.getElementById('tot').value = Math.round(total)
     document.getElementById('amountCount').innerHTML = totalAmount
+    document.getElementById('amountCountInput').value = totalAmount
 }
 
