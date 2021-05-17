@@ -9,6 +9,7 @@ def sql(request):
 def home(request):
 
     if request.method == "POST":
+        
         try:
             saleResume = ast.literal_eval(request.POST['sale'])
             client = get_object_or_404(Client, id=request.POST['client'])
@@ -16,18 +17,18 @@ def home(request):
             discount = request.POST['discount'] 
             iva = request.POST['iva'] 
             total = request.POST['total']
+            amount = request.POST['amountCountInput']
 
             sale = Sale.objects.create(client=client, iva=iva, discount=discount, total=total)
             sale.save()
 
-            resume = SaleDetail.objects.create(sale_id=sale, amount=2, subtotal=subtotal)
+            resume = SaleDetail.objects.create(sale_id=sale, amount=amount, subtotal=subtotal)
             resume.save()
 
             for item in saleResume:
-
                 product = get_object_or_404(Product, id=item['id'])
                 newStock = product.stock
-                newStock = newStock - item['amount']
+                newStock = newStock - int(item['amount'])
 
                 product.stock = newStock
                 product.save()

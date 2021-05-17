@@ -16,8 +16,8 @@
         <div class="text-center mb-5">
             <img src="/static/img/cactus-1.jpg" class="rounded" alt="...">
         </div>
+        {% if product.stock == -1 %}<h4 class="mb-3 text-danger">Sin stock</h4>{% else %}<h4 class="mb-3 text-success">Disponible</h4>{% endif %}
         
-
         <form action="" method="POST">
             {% csrf_token %}
     
