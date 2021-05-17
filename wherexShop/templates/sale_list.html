@@ -28,7 +28,7 @@
             {% for sale in sales %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td class="h6"><a href=" {% url 'sale_detail' sale=sale.id %}">{{ sale.id }}</a></td>
+                    <td class="h6 p-3"><a href=" {% url 'sale_detail' sale=sale.id %}">{{ sale.id }}</a></td>
                     <td>{{ sale.client }}</td>
                     <td>{{ sale.created_at }}</td>
                     <td>{{ sale.iva }}</td>

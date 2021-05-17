@@ -3,6 +3,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Client, Sale, SaleDetail
 import ast
 
+def sql(request):
+    return render(request, 'pruebasql.html') 
+
 def home(request):
 
     if request.method == "POST":
@@ -21,7 +24,15 @@ def home(request):
             resume.save()
 
             for item in saleResume:
-                resume.products.add(item['id'])    
+
+                product = get_object_or_404(Product, id=item['id'])
+                newStock = product.stock
+                newStock = newStock - item['amount']
+
+                product.stock = newStock
+                product.save()
+
+                resume.products.add(product)    
 
         except:
             print("fail")

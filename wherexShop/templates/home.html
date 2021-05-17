@@ -2,7 +2,7 @@
 
 {% block title %} Menu principal {% endblock %}
 
-{% block stylesheets %} <link rel="stylesheet" href="/static/css/home.css"> {% endblock stylesheets %}
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
 
@@ -110,7 +110,7 @@
 
             <div class="d-grid mt-3">
               <button class="btn btn-primary btn-lg mb-1" type="submit" name="add_sale" onsubmit="setFormSubmitting()">Ingresar venta</button>
-              <button class="btn btn-outline-danger" type="button">Vaciar carro</button>
+              <button class="btn btn-outline-danger" type="button" onClick="history.go(0);">Vaciar carro</button>
             </div>
           </form>
 
