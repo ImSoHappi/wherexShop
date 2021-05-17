@@ -2,7 +2,6 @@ import uuid
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Client, Sale, SaleDetail
 import ast
-import os
 
 def sql(request):
     return render(request, 'pruebasql.html') 
@@ -41,7 +40,6 @@ def home(request):
     context = {}
     context['products'] = Product.get_all_stock_product()
     context['active_clients'] = Client.get_all_active_client()
-    context['key'] = os.environ['DATABASE_URL']
     
     return render(request, 'home.html', context=context)
 
