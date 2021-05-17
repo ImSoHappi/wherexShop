@@ -47,23 +47,24 @@
 
     <div class="col-md-4 mt-5 mb-5">
       <div class="position-sticky" style="top: 2rem;">
-
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-secondary">Carrito</span>
-            <span class="badge bg-secondary rounded-pill" id="amountCount">0</span>
-          </h4>
-          <ul class="list-group mb-3" id="cart">
-            <li class="list-group-item d-flex justify-content-between lh-sm bg-secondary text-white p-3">
-              <div>
-                <h5 class="my-0" id="55">Producto</h5>
-              </div>
-              <h5>Precio unitario</h5>
-            </li>
-          </ul>
-          <hr>
         
           <form action="" method="POST">
             {% csrf_token %}
+
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-secondary">Carrito</span>
+              <span class="badge bg-secondary rounded-pill" id="amountCount">0</span>
+              <input type="number" id="amountCountInput" name="amountCountInput" style="display: none;">
+            </h4>
+            <ul class="list-group mb-3" id="cart">
+              <li class="list-group-item d-flex justify-content-between lh-sm bg-secondary text-white p-3">
+                <div>
+                  <h5 class="my-0" id="55">Producto</h5>
+                </div>
+                <h5>Precio unitario</h5>
+              </li>
+            </ul>
+            <hr>
 
             <textarea name="sale" id="sale" cols="30" rows="10" style="display: none;"></textarea>
 
