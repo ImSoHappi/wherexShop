@@ -1,6 +1,8 @@
 # wherexShop
 Página de evaluación para empresa Wherex.
 
+https://wherexshop.herokuapp.com/
+
 ## Requerimientos
 
 Crear una aplicación que permita almacenar clientes, productos y ventas. El sistema debe registrar las ventas con su detalle y guardar los totales incluyendo el iva, descuento general y el total
