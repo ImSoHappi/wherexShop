@@ -84,14 +84,14 @@ WSGI_APPLICATION = 'wherexBase.wsgi.application'
 
 
 DATABASES = {
-'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DATABASE,
-        'USER': USER,
-        'PASSWORD': PASSWORD,
-        'HOST': HOST,
-        'PORT': PORT,
-    }
+    'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': DATABASE,
+            'USER': USER,
+            'PASSWORD': PASSWORD,
+            'HOST': HOST,
+            'PORT': PORT,
+        }
 } 
 
 # Password validation
